@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overtimeRate 是否為空?</title>
+</head>
+
+<body>
+
+
+    <script>
+        //題目
+        let data = {
+            overtimeKindName: "一般出勤",
+            children:
+                [
+                    {
+                        overtimeItemId: "111",
+                        overtimeItemName: "出勤日",
+                        overtimeRate:
+                            [
+                                { id: "11101", startHour: 0, endHour: 2, rate: 1.34 },
+                                { id: "11102", startHour: 2, endHour: 6, rate: 1.68 },
+                                { id: "11103", startHour: 6, endHour: 8, rate: 1.8 }
+                            ]
+                    },
+                    {
+                        overtimeItemId: "112",
+                        overtimeItemName: "休息日",
+                        overtimeRate:
+                            [],
+                    },
+                    {
+                        overtimeItemId: "113",
+                        overtimeItemName: "出勤日",
+                        overtimeRate:
+                            [
+                                { id: "11201", startHour: 0, endHour: 2, rate: 1.34 },
+                                { id: "11202", startHour: 2, endHour: 6, rate: 1.68 },
+                                { id: "11203", startHour: 6, endHour: 8, rate: 1.8 }
+                            ],
+                    }
+                ]
+
+        }
+
+        
+        //答案
+        let childrenTmp = data.children; //先把data裡的Children抓出來存
+        delete data.children; //刪除data裡的children
+        // console.log(data);
+        for(let i = 0; i < childrenTmp.length; i++) { //逐一檢查children裡的overtimeRate是否為空
+            if(childrenTmp[i].overtimeRate.length === 0) { 
+                childrenTmp.splice(i, 1); //刪除overtimeRate為空的資料
+                break; //找到後跳出迴圈
+            }
+        }
+        // console.log(childrenTmp);
+        data.children = childrenTmp; //將更新後的children放回data裡
+        console.log(data);
+
+    </script>
+</body>
+
+</html>

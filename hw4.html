@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>findMin</title>
+</head>
+
+<body>
+
+    <script>
+        function findMin(...number) {  // ...number => [...]是uncertainty(不確定性) number是變數名稱(表示整包資料) 定義一個以上(不確定幾個)的輸入參數
+            // console.log(number); //沒有...的number屬於一組資料
+            let numMin = Math.min(...number);
+            return numMin;
+        }
+        console.log(findMin(4,5,80,-6,0,7));
+
+
+        //另一種方法
+        function findMinA(...number) {
+            let numMinA; //裝最小的值
+            for (i = 0; i < number.length; i++) {
+                if (i == 0) {
+                    numMinA = number[i];
+                } else {
+                    if (number[i] < numMinA) { //numMinA是上一層的numMinA
+                        numMinA = number[i];
+                    }
+                }
+            }
+            return numMinA;
+        }
+        console.log(findMinA(90,4,2,675,0.9,-5));
+
+    </script>
+</body>
+
+</html>

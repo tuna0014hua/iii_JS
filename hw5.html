@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Change</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Noto+Sans+JP:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background: #9D9D9D;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .wrapper {
+            height: 80vh;
+            margin: 20px;
+            padding: 50px;
+            background: #fff;
+        }
+
+        .tabs {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #D0D0D0;
+            font-size: 30px;
+        }
+
+        .tabs a {
+            width: 33.33%;
+            padding: 0 80px 15px;
+        }
+
+        .tab-content{
+            margin-top: 30px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="tabs">
+            <a>Home</a>
+            <a style="border-bottom:8px solid red;">About</a>
+            <a>Contact</a>
+        </div>
+        <div class="tab-content">
+            <div style="display: none;">
+                This is home
+            </div>
+            <div style="display: block;">
+                About me
+            </div>
+            <div style="display: none;">
+                Contact us
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let tabsbtn = document.querySelectorAll(".tabs>a");
+        let target = document.querySelectorAll(".tab-content>div");
+        
+
+        for (let i = 0; i < tabsbtn.length; i++) {  //第一層要所有的tabs有同樣功能
+            tabsbtn[i].addEventListener("click", function () {  //逐一設定點擊事件
+                for(let j = 0; j < target.length; j++) { //第二層迴圈作用為清除所有按鈕及內文(div)設定
+                    target[j].style.display = "none"; //target[j] 第j個 內文(div)
+                    tabsbtn[j].style.borderBottom = "8px solid transparent"; //tabsbtn[j] 第j個 <a> (.tabs)
+                }
+                target[i].style.display = "block";  //只顯示該點擊按鈕對應的內文(div)
+                tabsbtn[i].style.borderBottom = "8px solid red";  //只顯示該點擊按鈕的<a>的下底線
+            });
+        }
+    </script>
+</body>
+
+</html>

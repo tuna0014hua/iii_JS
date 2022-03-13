@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Star</title>
+</head>
+<body>
+    <p id="littleStar"></p>
+    
+    <script>
+        let littleStar = document.querySelector("#littleStar");
+
+        function star(number){
+            let starArr = "";
+            //此迴圈為上半部(1~n列)
+            for(let i = 0; i < number; i++){  //控制列數
+                for(let j = 0; j <= i; j++){  //控制每列星數
+                    starArr = starArr + "*";
+                    if(j === i){ 
+                        starArr = starArr + "\n";
+                    }
+                }
+            }
+            //此迴圈圍下半部(n+1~最後)
+            for(let k = number-1; k > 0; k--){
+                for(let l = k; l > 0; l--){
+                    starArr = starArr + "*";
+                    if(l === 1){
+                        starArr = starArr + "\n";
+                    }
+                }
+            }
+            // console.log(starArr);
+            littleStar.innerText = starArr;
+        }
+        star(5)
+
+
+        //另一種方法
+        // let littleStar = document.querySelector("#littleStar");
+
+        // function star(number){
+        //     let starArr = "";
+        //     let totalRow = number * 2 - 1;
+        //     for (let i = 1; i <= totalRow; i++) {
+        //         if (i < number) {
+        //             for (let j = 1; j <= i; j++) {
+        //                 starArr = starArr + "*";
+        //             }
+        //             starArr = starArr + "\n"
+        //         } else {
+        //             for (let j = i; j <= totalRow; j++) {
+        //                 starArr = starArr + "*";
+        //             }
+        //             starArr = starArr + "\n"
+        //         }
+        //     }
+        //     littleStar.innerText = starArr;
+        // }
+        // star(5)
+
+    </script>
+</body>
+</html>
